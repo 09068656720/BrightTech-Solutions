@@ -2,7 +2,7 @@ import React from "react";
 
 const ServiceCard = ({title, description}) => {
     return(
-        <div>
+        <div className="card">
             <h3>{title}</h3>
             <p>{description}</p>
         </div>

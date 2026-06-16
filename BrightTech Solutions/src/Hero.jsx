@@ -1,11 +1,12 @@
 import React from "react";
+import "./Hero.css";
 
 const Hero = () => {
     return(
-        <header>
+        <header className="hero">
             <h1> BrightTech Solutions</h1>
             <p>Building Modern Digital Experiences</p>
-            <button>Get Started</button>
+            <button className="hero-btn">Get Started</button>
         </header>
     );
 };

@@ -1,8 +1,9 @@
 import React from "react";
+import "./Footer";
 
 const Footer = () =>{
     return(
-        <footer>
+        <footer className="footer">
         <p>$copy; 2026 BrightTech Solutions</p>
         </footer>
     );

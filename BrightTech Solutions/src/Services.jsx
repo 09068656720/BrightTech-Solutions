@@ -1,5 +1,6 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
+import"./Services.css";
 
 const Services = () => {
   const services = [
@@ -15,12 +16,16 @@ const Services = () => {
       title: "Web Development",
       description: "We build fast website",
     },
+    {
+      title: "Content/Essay writing",
+      description: "You will never regret our write up",
+    },
   ];
 
   return(
-    <section id="services">
+    <section className="services" id="services">
       <h2>Our Services</h2>
-      <div>
+      <div className="services-grid">
         {/* Iterating over the array using.map() */}
         {
           services.map((service, index) =>(

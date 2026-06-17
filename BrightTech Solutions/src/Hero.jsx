@@ -1,14 +1,16 @@
-import React from "react";
-import "./Hero.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Hero.css'
 
 const Hero = () => {
-    return(
-        <header className="hero">
-            <h1> BrightTech Solutions</h1>
-            <p>Building Modern Digital Experiences</p>
-            <button className="hero-btn">Get Started</button>
-        </header>
-    );
+  return (
+    <div className="hero">
+      {/* Turn the Link directly into the button class */}
+      <Link to="/contact" className="hero-btn" style={{ textDecoration: 'none' }}>
+        Get Started
+      </Link>
+    </div>
+  );
 };
 
 export default Hero;

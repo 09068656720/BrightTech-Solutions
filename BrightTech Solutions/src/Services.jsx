@@ -13,8 +13,8 @@ const Services = () => {
       description: "Beautiful user experiences",
     },
     {
-      title: "Web Development",
-      description: "We build fast website",
+      title: "Digital Marketing",
+      description: "Grow your business online.",
     },
     {
       title: "Content/Essay writing",

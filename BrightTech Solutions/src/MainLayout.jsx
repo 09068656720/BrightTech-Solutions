@@ -1,20 +1,26 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar"; 
-import Footer from "./Footer"; // <--- Add this import
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "./Navbar";
+import CTA from "./CTA";
+import Footer from "./Footer";
 
 const MainLayout = () => {
+  const location = useLocation();
+
+  // Normalize path check to handle trailing slashes or mixed casing
+  const isContactPage = location.pathname.toLowerCase().replace(/\/$/, "") === "/contact";
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* 1. Navbar stays fixed at the top */}
+    <div className="layout-wrapper">
       <Navbar />
       
-      {/* 2. Main content takes up all available space */}
-      <main style={{ flex: "1", padding: "20px" }}>
+      <main className="main-content">
         <Outlet />
       </main>
+
+      {/* Render CTA banner on all pages except Contact */}
+      {!isContactPage && <CTA />}
       
-      {/* 3. Footer stays fixed at the bottom */}
       <Footer />
     </div>
   );

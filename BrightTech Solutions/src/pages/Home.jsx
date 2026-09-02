@@ -1,6 +1,8 @@
 import React from "react";
 import Hero from "../Hero";
 import Services from "../Services";
+import Testimonials from "../Testimonials";
+import FAQ from "../FAQ";
 import "../Responsive.css";
 
 const Home = () => {
@@ -8,7 +10,9 @@ const Home = () => {
     <div>
       <Hero />
       <Services />
-    </div>
+      <Testimonials />
+      <FAQ />
+      </div>
   );
 };
 

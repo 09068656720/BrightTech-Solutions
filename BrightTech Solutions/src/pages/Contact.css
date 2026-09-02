@@ -1,110 +1,122 @@
+/* --- Global Container --- */
 .contact-container {
-  max-width: 1100px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 80px 20px;
-  min-height: 85vh;
+  padding: 100px 20px 60px 20px; /* 100px top padding clears fixed navbar */
+  box-sizing: border-box;
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
-/* ==========================================
-   LIGHT MODE (DEFAULT)
-   ========================================== */
 .contact-header h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 12px;
+  color: #0f172a;
+  margin-bottom: 10px;
 }
 
 .contact-header p {
-  color: #4b5563;
-  font-size: 1.05rem;
+  color: #64748b;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Two-column Grid */
+/* --- Responsive Wrapper Layout --- */
 .contact-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
+@media (min-width: 900px) {
+  .contact-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
+
+/* --- Left Side: Info Cards --- */
 .contact-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-/* Cards & Form (Light Mode) */
-.info-card,
-.contact-form {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+  max-width: 500px;
 }
 
 .info-card {
-  padding: 24px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-.contact-form {
-  padding: 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
+/* Fix icon visibility in light/dark themes */
 .info-icon {
-  font-size: 1.4rem;
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.1);
-  padding: 14px;
-  border-radius: 10px;
-  box-sizing: content-box;
+  font-size: 1.5rem;
+  color: #2563eb !important; /* Bright blue icon */
+  flex-shrink: 0;
 }
 
 .info-card h3 {
-  color: #111827;
+  margin: 0 0 4px 0;
   font-size: 1.1rem;
-  margin-bottom: 4px;
+  color: #0f172a;
 }
 
 .info-card p {
-  color: #4b5563;
+  margin: 0;
+  color: #64748b;
   font-size: 0.95rem;
+  word-break: break-all; /* Prevents long email addresses from overflowing card boundary */
 }
 
-/* Input Fields (Light Mode) */
+/* --- Right Side: Form --- */
+.contact-form {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
 .form-group {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background-color: #f8fafc;
+  padding: 12px 16px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
-  padding: 14px 16px;
-  color: #0f172a;
   font-size: 0.95rem;
+  background-color: #f8fafc;
+  color: #0f172a;
   outline: none;
-  box-sizing: border-box;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #94a3b8;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -113,68 +125,46 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-/* Form Validation Styles */
-.input-error {
-  border-color: #ef4444 !important;
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-color: #ef4444;
 }
 
 .error-text {
   color: #ef4444;
-  font-size: 0.82rem;
+  font-size: 0.825rem;
   margin-top: 6px;
-  font-weight: 500;
 }
 
-.status-banner {
-  padding: 14px 16px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.success-banner {
-  background-color: rgba(34, 197, 94, 0.15);
-  color: #15803d;
-  border: 1px solid #22c55e;
-}
-
-.error-banner {
-  background-color: rgba(239, 68, 68, 0.15);
-  color: #b91c1c;
-  border: 1px solid #ef4444;
-}
-
-/* Button & Spinner */
+/* Submit Button */
 .submit-btn {
+  width: 100%;
+  padding: 14px;
   background-color: #2563eb;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 14px;
   border: none;
   border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease;
 }
 
-.submit-btn:hover:not(:disabled) {
+.submit-btn:hover {
   background-color: #1d4ed8;
-  transform: translateY(-2px);
 }
 
 .submit-btn:disabled {
-  opacity: 0.7;
+  background-color: #93c5fd;
   cursor: not-allowed;
 }
 
 .spinner {
   animation: spin 1s linear infinite;
+  margin-right: 8px;
 }
 
 @keyframes spin {
@@ -182,104 +172,64 @@
   to { transform: rotate(360deg); }
 }
 
-/* ==========================================
-   DARK MODE OVERRIDES
-   ========================================== */
+/* Banners */
+.status-banner {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.success-banner {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.error-banner {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* --- Dark Mode Styles --- */
 body.dark-mode .contact-header h1 {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 body.dark-mode .contact-header p {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 
 body.dark-mode .info-card,
 body.dark-mode .contact-form {
-  background-color: #1a2332 !important;
-  border-color: #2a364f !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
-}
-
-body.dark-mode .info-card h3 {
-  color: #ffffff !important;
-}
-
-body.dark-mode .info-card p {
-  color: #94a3b8 !important;
+  background-color: #1e293b;
+  border-color: #334155;
 }
 
 body.dark-mode .info-icon {
-  color: #38bdf8 !important;
-  background: rgba(56, 189, 248, 0.1) !important;
+  color: #60a5fa !important; /* High contrast light blue icon in dark mode */
+}
+
+body.dark-mode .info-card h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .info-card p {
+  color: #94a3b8;
 }
 
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea {
-  background-color: #0f172a !important;
-  border-color: #2a364f !important;
-  color: #ffffff !important;
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #ffffff;
 }
 
 body.dark-mode .form-group input::placeholder,
 body.dark-mode .form-group textarea::placeholder {
-  color: #64748b !important;
-}
-
-body.dark-mode .success-banner {
-  background-color: rgba(34, 197, 94, 0.2) !important;
-  color: #4ade80 !important;
-}
-
-/* Responsive View */
-@media (max-width: 768px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-.contact-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.contact-header {
-  text-align: center;
-  margin-bottom: 32px;
-  width: 100%;
-}
-
-.contact-header h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 8px;
-}
-
-/* Card Wrapper Grid */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 900px; /* Controls max container span */
-  justify-items: center;
-}
-
-.contact-card {
-  width: 100%;
-  max-width: 400px; /* Prevents card from exceeding mobile screen */
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-body.dark-mode .contact-card {
-  background: #1e293b;
-  border-color: #334155;
+  color: #64748b;
 }
